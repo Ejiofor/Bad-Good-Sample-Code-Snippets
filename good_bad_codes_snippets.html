@@ -1,0 +1,271 @@
+<!--GOOD AND BAD CODES SAMPLE SNIPPETS-->
+
+<!--Sample 1-->
+<!-- Bad Code-->
+<!--Using lowercase tag names increases code readability and writing.
+It is an implicit convention adopted by the industry.-->
+<!--It is a better practice to use the actually use the semantic elements
+meant for the structuring the content of the page. Considering the case of the div element
+below using class myheader, that is bad. Better use the actual h1 element meant for creating page title-->
+<!--It is a good coding practice to use class selector to select more than one element. Using
+id selector for multiple elements is bad.The id selector is meant for uniquely selecting elements-->
+<!--Finally, it is also a good practice to indent and organize our code-->
+<DIV>
+<DIV class="myheader" ><b>Page Tile</b></DIV>
+<p id = "myp1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p id ="myp1">elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+</DIV>
+
+<!-- Good Code-->
+<div>
+  <h1>Page Title</h1>
+  <p id = "myp1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p id ="myp2">elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+</div>
+
+
+<!--Sample 2-->
+<!-- Bad Code-->
+<!--Leaving out !DOCTYPE might cause the pag to not render well in some browsers.
+The page will still render without !DOCTYPE html but it is a bad coding practice-->
+<!--It is a bad practice to leave out alt attribute. It is even a better practice to
+to not only leave it out but also give it a meaning name-->
+<!--It is a good practice to separate style from HTML structure.Doing so encourages
+scalability-->
+<!--Use meaningful names. Hyphen is prefered to underscore-->
+<!--Always place external css files in the head element-->
+
+<head>
+<title>My Favorites Kinds of Corn</title>
+</head>
+<body>
+  <link rel="stylesheet" type="text/css" media="screen" href="mycss/mystyle.css" />
+  <div>
+    <h3>The African Cats</h3>
+    <img id = "my_img1" src ="images/cat.jpg" />
+    <p  style ="background-color : blue;margin-left:30px;">elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+  </div>
+</body>
+
+<!-- Good Code-->
+<!DOCTYPE html>
+<head>
+<title>My Favorites Kinds of Corn</title>
+<link rel="stylesheet" type="text/css" media="screen" href="mycss/mystyle.css" />
+</head>
+<body>
+  <div>
+    <h3>The African Cats</h3>
+    <img id = "cat-img" src ="images/cat.jpg" alt ="African cats image" />
+    <p id ="first-paragraph">elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+  </div>
+</body>
+
+
+
+
+<!--myExternalfile.csss-->
+<!--Sample 3-->
+<!-- Bad Code-->
+<!--It is a good coding practice to leave out unit when the value is zero-->
+<!--Using minimized shorthand properties is also a good practice.By doing so,we
+reduce the amount of code we write and makes the file l faster-->
+#mango_img{
+  padding-top: 14px;
+  padding-right: 3px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+}
+
+<!-- Good Code-->
+#mango-img{
+  padding-top: 14px 3px 15px 0;
+}
+
+<!--sample 4-->
+<!--Bad Code-->
+<!--Avoid declaring variable as object. It could produce unexpected result.As well
+reducing execution speed-->
+<!--The same goes for all primitive types. Note that primitive types are preferred to Objects-->
+<script>
+var name =new String ("Ejiofor");
+</script>
+
+
+<!--Good Code-->
+<script>
+var name ="Ejiofor";
+</script>
+
+
+
+<!--sample 5-->
+<!--Bad Code-->
+<!--It is a good practice to cache jquery you plan on using repeatly.It is a lot faster-->
+<!--It is also good to chain the methods whenever the need arises. Keep the code DRY-->
+<!--Also do not forget to make sure that the document is fully loaded and ready-->
+<script>
+
+  var animate-page = function()
+  {
+      $("#div1").ToggleClass("myclass");
+      $("#div1").fadeOut(500);
+      $("#div1").fadeIn(500);
+  }
+
+
+</script>
+
+<!--Good Code-->
+<script>
+$document.ready(function(){
+var $mydiv1 = $("#div1");
+var animate-page = function()
+{
+    $mydiv1.ToggleClass("myclass")
+           .fadeOut(500)
+           .fadeIn(500);
+}
+});
+</script>
+
+
+
+<!--sample 6-->
+<!--Bad Code-->
+<!--Map() naturally returns an array. Hence Map() is preferred to each().
+We do less computation.-->
+<!--#result only calls document.getElementById(). Again this means less computation.-->
+<!--Avoiding object creation is always a good practice.-->
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src ="scripts/jquery.js"></script>
+<script>
+$(document).ready(function(){
+var mystring = new String();
+
+$("li").each(function(index, element){
+
+   mystring += $(element).text()+"<br/>";
+});
+ $("div#result").html(mystring);
+});
+</script>
+</head>
+
+<body>
+<ul id ="mylist">
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+  <li>bootstrap</li>
+  <li>JQuery</li>
+</ul>
+
+<div id="result"></div>
+</body>
+</html>
+
+<!--Good Code-->
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src ="scripts/jquery.js"></script>
+<script>
+$(document).ready(function(){
+
+$("#result").html($("li").map(function(index, element){
+   return $(element).text();
+}).get().join(" <br>"));
+
+});
+</script>
+</head>
+
+<body>
+<ul id ="mylist">
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+  <li>bootstrap</li>
+  <li>JQuery</li>
+</ul>
+<div id="result"></div>
+</body>
+</html>
+
+
+
+
+<!--Sample 7-->
+<!--Bad Code-->
+<!--Once again it's preferable to use primitive types. Objects results to overhead
+sometimes unexpected outcome.Hence better use primitve array in this case.-->
+<!--Using shorthand notation is always a good practice. In this case
+a shorthand notation of if else ... should be used.-->
+<!--== forces comparison of values and type Where as always naturally converts (to matching types) before comparison.
+As a result, === is a better coding practice-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src ="scripts/jquery.js"></script>
+<script>
+var num = Math.floor((Math.random() * 4) + 0);
+var lunch = new Array();
+lunch[0]='Jeans';
+lunch[1]='Shirt';
+lunch[2]='Coat';
+lunch[3]='Shoe';
+$(document).ready(function(){
+  $("#result").html(lunch[num]);
+  if(lunch[num]=="Shoe"){
+    $("#displayanswer").html("CORRECT, CONGRATS !!!");
+  }
+  else {
+    $("#displayanswer").html("WRONG ");
+  }
+});
+
+</script>
+</head>
+
+<body>
+<div id="result"></div>
+<div id="displayanswer"></div>
+</body>
+
+</html>
+
+
+
+<!--Good Code-->
+<html>
+<head>
+<script src ="scripts/jquery.js"></script>
+<script>
+var num = Math.floor((Math.random() * 4) + 0);
+var lunch = [
+   'Jeans',
+   'Shirt',
+   'Coat',
+   'Shoe'
+];
+$(document).ready(function(){
+  $("#result").html(lunch[num]);
+
+(lunch[num]=="Shoe") ? $("#displayanswer").html("CORRECT, CONGRATS !!!") : $("#displayanswer").html("WRONG ");
+
+});
+</script>
+</head>
+
+<body>
+<div id="result"></div>
+<div id="displayanswer"></div>
+</body>
+
+</html>
